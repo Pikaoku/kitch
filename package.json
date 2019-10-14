@@ -1,7 +1,7 @@
 {
-  "name": "blend",
+  "name": "kitch",
   "version": "1.0.0",
-  "description": "\"temp\"",
+  "description": "The Kitchen Pattern: Making POJO's easier",
   "main": "index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pikaoku/blend.git"
+    "url": "git+https://github.com/Pikaoku/kitch.git"
   },
   "keywords": [],
   "author": "Sean McGarrity",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Pikaoku/blend/issues"
+    "url": "https://github.com/Pikaoku/kitch/issues"
   },
-  "homepage": "https://github.com/Pikaoku/blend#readme",
+  "homepage": "https://github.com/Pikaoku/kitch#readme",
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "@types/typescript": "^2.0.0",
