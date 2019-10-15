@@ -30,8 +30,8 @@ export function cook<Model>(
 
 export const prep = {
 	empty: {
-		string: () => '',
 		array: () => [],
 		number: () => 0,
+		string: () => '',
 	},
 }
