@@ -8,7 +8,6 @@ export type Chef<Model> = (recipe: Recipe<Model>) => Model
 
 export interface Kitchen<Model> {
 	new: Cooker<Model>
-	seed: Cooker<Model>
 	readonly [key: string]: Cooker<Model>
 }
 
