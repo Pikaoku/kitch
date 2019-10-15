@@ -1,44 +1,46 @@
 {
-  "name": "kitch",
-  "version": "1.0.1",
-  "description": "The Kitchen Pattern: Making POJO's easier",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest --config jestconfig.json",
-    "test-watch": "jest --config jestconfig.json --watchAll",
-    "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Pikaoku/kitch.git"
-  },
-  "keywords": [],
-  "author": "Sean McGarrity",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Pikaoku/kitch/issues"
-  },
-  "homepage": "https://github.com/Pikaoku/kitch#readme",
-  "devDependencies": {
-    "@types/faker": "^4.1.6",
-    "@types/jest": "^24.0.18",
-    "@types/typescript": "^2.0.0",
-    "faker": "^4.1.0",
-    "jest": "^24.9.0",
-    "prettier": "^1.18.2",
-    "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.4"
-  },
-  "files": [
-    "lib/**/*"
-  ]
+	"name": "kitch",
+	"version": "1.0.1",
+	"description": "The Kitchen Pattern: Making POJO's easier",
+	"main": "lib/kitch",
+	"types": "lib/kitch",
+	"typings": "lib/kitch",
+	"scripts": {
+		"test": "jest --config jestconfig.json",
+		"test-watch": "jest --config jestconfig.json --watchAll",
+		"build": "tsc",
+		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+		"lint": "tslint -p tsconfig.json",
+		"prepare": "npm run build",
+		"prepublishOnly": "npm test && npm run lint",
+		"preversion": "npm run lint",
+		"version": "npm run format && git add -A src",
+		"postversion": "git push && git push --tags"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Pikaoku/kitch.git"
+	},
+	"keywords": [],
+	"author": "Sean McGarrity",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Pikaoku/kitch/issues"
+	},
+	"homepage": "https://github.com/Pikaoku/kitch#readme",
+	"devDependencies": {
+		"@types/faker": "^4.1.6",
+		"@types/jest": "^24.0.18",
+		"@types/typescript": "^2.0.0",
+		"faker": "^4.1.0",
+		"jest": "^24.9.0",
+		"prettier": "^1.18.2",
+		"ts-jest": "^24.1.0",
+		"tslint": "^5.20.0",
+		"tslint-config-prettier": "^1.18.0",
+		"typescript": "^3.6.4"
+	},
+	"files": [
+		"lib/**/*"
+	]
 }
