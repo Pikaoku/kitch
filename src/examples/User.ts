@@ -1,5 +1,5 @@
 import * as faker from 'faker'
-import { Chef, cook, Cooker, Recipe, Kitchen } from '../kitch'
+import { cook, Kitchen, Recipe } from '../kitch'
 
 interface User {
 	name: string
