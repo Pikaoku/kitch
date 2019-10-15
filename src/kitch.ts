@@ -28,7 +28,7 @@ export function cook<Model>(
 	return { ...(chef || sousChef)(recipe), ...ingredients }
 }
 
-export const prep = {
+export const Prep = {
 	empty: {
 		array: () => [],
 		number: () => 0,
