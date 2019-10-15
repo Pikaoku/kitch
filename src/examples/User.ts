@@ -1,5 +1,5 @@
 import * as faker from 'faker'
-import { cook, Cooker, Kitchen, Recipe } from '../kitch'
+import { kitch, Recipe } from '../kitch'
 
 interface User {
 	name: string
@@ -20,14 +20,13 @@ const fakerRecipe: Recipe<User> = {
 	status: () => (Math.random() > 0.5 ? 'active' : 'disabled'),
 }
 
-interface Kitch extends Kitchen<User> {
-	empty: Cooker<User>
-}
+export const UserKitchen = kitch(emptyRecipe)
+export const SeededUserKitchen = kitch(fakerRecipe)
 
-const UserKitchen: Kitch = {
-	empty: () => cook(undefined, emptyRecipe),
-	new: data => cook(data, emptyRecipe),
-	seed: data => cook(data, fakerRecipe),
-}
+// New User
+// UserKitchen.new()
+
+// New Seeder User
+// SeededUserKitchen.new()
 
 export default UserKitchen

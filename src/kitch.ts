@@ -27,6 +27,12 @@ export function cook<Model>(
 	return { ...(chef || sousChef)(recipe), ...ingredients }
 }
 
+export function kitch<Model>(recipe: Recipe<Model>): Kitchen<Model> {
+	return {
+		new: data => cook(data, recipe),
+	}
+}
+
 export const Prep = {
 	empty: {
 		array: () => [],
