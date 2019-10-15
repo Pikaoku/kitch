@@ -30,7 +30,19 @@ export function cook<Model>(
 export const Prep = {
 	empty: {
 		array: () => [],
+		false: () => false,
 		number: () => 0,
 		string: () => '',
+		true: () => true,
+	},
+	random: {
+		boolean: (): boolean => Math.random() > 0.5,
+		percentage: (): number => Math.floor(Math.random() * 100) + 1,
+	},
+	value: {
+		array: (value: any[]): (() => any[]) => () => value,
+		boolean: (value: boolean) => () => value,
+		number: (value: number) => () => value,
+		string: (value: string) => () => value,
 	},
 }
