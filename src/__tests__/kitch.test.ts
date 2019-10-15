@@ -28,5 +28,8 @@ test('Includes Recipe', () => {
 
 	console.table([TestKitch.new()])
 
-	expect(TestKitch.new()).toHaveProperty(Object.keys(emptyTestRecipe))
+	expect(TestKitch.new()).toHaveProperty('children')
+	expect(TestKitch.new()).toHaveProperty('id')
+	expect(TestKitch.new()).toHaveProperty('kill')
+	expect(TestKitch.new()).toHaveProperty('name')
 })
