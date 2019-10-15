@@ -1,6 +1,6 @@
 {
 	"name": "kitch",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "The Kitchen Pattern: Making POJO's easier",
 	"main": "lib/kitch",
 	"types": "lib/kitch",
