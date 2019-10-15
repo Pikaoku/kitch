@@ -13,11 +13,11 @@ export interface Kitchen<Model> {
 }
 
 export function sousChef<Model>(recipe: Recipe<Model>): Model {
-	const dish = {} as Model
-	Object.keys(recipe).forEach(
-		(key: string): Model => (dish[key] = recipe[key]())
-	)
-	return dish
+	// TODO: investigate a way to remove these type coercions
+	const dish = {} as Partial<Model>
+	const keys = Object.keys(recipe) as [keyof Model]
+	keys.forEach((key): Model[keyof Model] => (dish[key] = recipe[key]()))
+	return dish as Model
 }
 
 export function cook<Model>(
