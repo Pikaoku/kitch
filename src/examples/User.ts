@@ -1,5 +1,5 @@
 import * as faker from 'faker'
-import { kitch, Recipe } from '../kitch'
+import { kitch, Recipe, Kitchen, cook } from '../kitch'
 
 interface User {
 	name: string
@@ -28,5 +28,11 @@ export const SeededUserKitchen = kitch(fakerRecipe)
 
 // New Seeder User
 // SeededUserKitchen.new()
+
+export const CustomUserKitchen: Kitchen<User> = {
+	namedJohn: () => cook({ name: 'John' }, emptyRecipe),
+	new: data => cook(data, emptyRecipe),
+	seed: data => cook(data, fakerRecipe),
+}
 
 export default UserKitchen
