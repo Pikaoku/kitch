@@ -32,9 +32,9 @@ To truly utilize kitch you will need an interface of your POJO.
 
 ```TS
 interface User {
-	name: string
-	age: number
-	status: 'active' | 'disabled'
+    name: string
+    age: number
+    status: 'active' | 'disabled'
 }
 ```
 
@@ -42,9 +42,9 @@ Now, provide a recipe of how to create one of your POJOs. A recipe is a typesafe
 
 ```TS
 const emptyRecipe: Recipe<User> = {
-	age: () => 0, // number
-	name: () => '', // string
-	status: () => 'active', // 'active' | 'disabled'
+    age: () => 0, // number
+    name: () => '', // string
+    status: () => 'active', // 'active' | 'disabled'
 }
 ```
 
@@ -52,7 +52,7 @@ Okay, so you have a recipe. Now you need a way to make it! Is that gonna be hard
 
 ```TS
 export const UserKitchen: Kitchen<User> = {
-	new: data => cook(data, emptyRecipe),
+    new: data => cook(data, emptyRecipe),
 }
 
 
@@ -88,15 +88,15 @@ But, we haven't really got any of the juice out of this yet. The real benefit is
 
 const fakerRecipe: Recipe<User> = {
     ...emptyRecipe, // not needed in this example, but shows how you can quickly create extensible recipes
-	age: faker.random.number,
-	name: faker.name.findName,
-	status: () => (Math.random() > 0.5 ? 'active' : 'disabled'),
+    age: faker.random.number,
+    name: faker.name.findName,
+    status: () => (Math.random() > 0.5 ? 'active' : 'disabled'),
 }
 
 export const UserKitchen: Kitchen<User> = {
-	namedJohn: () => cook({ name: 'John' }, emptyRecipe),
-	new: data => cook(data, emptyRecipe),
-	seed: data => cook(data, fakerRecipe),
+    namedJohn: () => cook({ name: 'John' }, emptyRecipe),
+    new: data => cook(data, emptyRecipe),
+    seed: data => cook(data, fakerRecipe),
 }
 
 const mySeededUsers: User[] = [
