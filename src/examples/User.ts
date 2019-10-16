@@ -15,6 +15,7 @@ const emptyRecipe: Recipe<User> = {
 
 // Seeding Recipe
 const fakerRecipe: Recipe<User> = {
+	...emptyRecipe,
 	age: faker.random.number,
 	name: faker.name.findName,
 	status: () => (Math.random() > 0.5 ? 'active' : 'disabled'),

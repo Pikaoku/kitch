@@ -24,7 +24,7 @@ To use kitch you will need to create an `interface` of the POJO you want to use.
 
 When you have a Recipe, create a new `Kitchen<interface>`. This will be an object of functions that can take overwrite data and produce a new instance of `interface` by utilizing one or your `Recipes`. You can quickly create a simple `Kitchen` by calling the `kitch` function.
 
-With a kitchen created you can create a new POJO by simply calling `.new()`. You can pass additional data to the `.new()` function to overwrite the recipe. 
+With a kitchen created you can create a new POJO by simply calling `.new()`. You can pass additional data to the `.new()` function to overwrite the recipe.
 
 ## Example
 
@@ -87,6 +87,7 @@ But, we haven't really got any of the juice out of this yet. The real benefit is
 ```TS
 
 const fakerRecipe: Recipe<User> = {
+    ...emptyRecipe, // not needed in this example, but shows how you can quickly create extensible recipes
 	age: faker.random.number,
 	name: faker.name.findName,
 	status: () => (Math.random() > 0.5 ? 'active' : 'disabled'),
