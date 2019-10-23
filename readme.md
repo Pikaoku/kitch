@@ -88,8 +88,8 @@ But, we haven't really got any of the juice out of this yet. The real benefit is
 
 const fakerRecipe: Recipe<User> = {
     ...emptyRecipe, // not needed in this example, but shows how you can quickly create extensible recipes
-    age: faker.random.number,
-    name: faker.name.findName,
+    age: generateRandomAge,
+    name: generateRandomName,
     status: () => (Math.random() > 0.5 ? 'active' : 'disabled'),
 }
 
