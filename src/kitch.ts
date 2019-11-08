@@ -6,9 +6,16 @@ export type Recipe<Model> = { [key in keyof Model]: RecipeLine<Model[key]> }
 
 export type Chef<Model> = (recipe: Recipe<Model>) => Model
 
-export interface Kitchen<Model> {
-	new: Cooker<Model>
-	readonly [key: string]: Cooker<Model>
+export interface CookBook<Model> {
+	[key: string]: Recipe<Model>
+}
+
+export interface SimpleCookBook<Model> {
+	new: Recipe<Model>
+}
+
+export type Kitchen<Model, CB = SimpleCookBook<Model>> = {
+	[key in keyof CB]: Cooker<Model>
 }
 
 export interface SeedKitchen<Model> extends Kitchen<Model> {
@@ -31,10 +38,18 @@ export function cook<Model>(
 	return { ...(chef || sousChef)(recipe), ...ingredients }
 }
 
-export function kitch<Model>(recipe: Recipe<Model>): Kitchen<Model> {
-	return {
-		new: data => cook(data, recipe),
-	}
+function toCooker<Model>(recipe: Recipe<Model>): Cooker<Model> {
+	return (data?: Partial<Model>): Model => cook(data, recipe)
+}
+
+export function kitch<Model>(
+	newRecipe: Recipe<Model>,
+	cookbook: CookBook<Model> = {}
+): Readonly<Kitchen<Model>> {
+	const kitchen: Kitchen<Model> = { new: toCooker<Model>(newRecipe) }
+	const cb = Object.entries(cookbook)
+	cb.forEach(([key, recipe]) => (kitchen[key] = toCooker<Model>(recipe)))
+	return kitchen
 }
 
 export const Prep = {
