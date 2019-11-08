@@ -1,4 +1,4 @@
-import { cook, Recipe, RecipeLine, Kitchen, kitch, SeedKitchen } from '../kitch'
+import { cook, Recipe, RecipeLine, Kitchen } from '../kitch'
 
 test('Handle Empty', () => {
 	expect(cook({}, {})).toEqual({})
@@ -8,32 +8,28 @@ test('Includes Recipe', () => {
 	interface TestModel {
 		name: string
 		id: number
-		color: 'red' | 'blue' | 'green'
+		children: TestModel[]
+		kill: () => void
 	}
 
 	const emptyTestRecipe: Recipe<TestModel> = {
-		color: () => 'red',
+		children: () => [],
 		id: () => 1,
+		kill: () => () => {
+			let two = 1 + 1
+		},
 		name: () => '',
 	}
 
-	const seedTestRecipe: Recipe<TestModel> = {
-		color: () => 'blue',
-		id: () => 18,
-		name: () => 'literally anything',
-	}
-
-	const TestKitchen: Kitchen<TestModel> = {
+	const TestKitch: Kitchen<TestModel> = {
 		new: data => cook(data, emptyTestRecipe),
 		seed: data => cook(data, emptyTestRecipe),
 	}
 
-	expect(TestKitchen.new()).toHaveProperty('children')
-	expect(TestKitchen.new()).toHaveProperty('id')
-	expect(TestKitchen.new()).toHaveProperty('kill')
-	expect(TestKitchen.new()).toHaveProperty('name')
+	console.table([TestKitch.new()])
 
-	const TestKitch = kitch(emptyTestRecipe, { seed: seedTestRecipe })
-
-	TestKitch.see
+	expect(TestKitch.new()).toHaveProperty('children')
+	expect(TestKitch.new()).toHaveProperty('id')
+	expect(TestKitch.new()).toHaveProperty('kill')
+	expect(TestKitch.new()).toHaveProperty('name')
 })
