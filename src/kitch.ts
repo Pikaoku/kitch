@@ -11,6 +11,10 @@ export interface Kitchen<Model> {
 	readonly [key: string]: Cooker<Model>
 }
 
+export interface SeedKitchen<Model> extends Kitchen<Model> {
+	seed: Cooker<Model>
+}
+
 export function sousChef<Model>(recipe: Recipe<Model>): Model {
 	// TODO: investigate a way to remove these type coercions
 	const dish = {} as Partial<Model>
