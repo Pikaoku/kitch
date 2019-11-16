@@ -36,6 +36,16 @@ export function kitch<Model>(recipe: Recipe<Model>): Kitchen<Model> {
 	}
 }
 
+export function seedkitch<Model>(
+	recipeNew: Recipe<Model>,
+	recipeSeed: Recipe<Model>
+): SeedKitchen<Model> {
+	return {
+		new: data => cook(data, recipeNew),
+		seed: data => cook(data, recipeSeed),
+	}
+}
+
 export const Prep = {
 	empty: {
 		array: () => [],
