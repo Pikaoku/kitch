@@ -16,8 +16,7 @@ export interface SeedKitchen<Model> extends Kitchen<Model> {
 }
 
 export function sousChef<Model>(recipe: Recipe<Model>): Model {
-	// TODO: investigate a way to remove these type coercions
-	const dish = {} as Partial<Model>
+	const dish: Partial<Model> = {}
 	const keys = Object.keys(recipe) as [keyof Model]
 	keys.forEach((key): Model[keyof Model] => (dish[key] = recipe[key]()))
 	return dish as Model
